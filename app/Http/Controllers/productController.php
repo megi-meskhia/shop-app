@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class productController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,6 +13,7 @@ class productController extends Controller
     public function index()
     {
        $products = Product::get();
+       
        return view('products.index', ['products' => $products]);
     }
 
@@ -80,6 +81,7 @@ class productController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
+        //TODO if products already had photo, and client uploaded new one, old photo should be deleted
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('images', 'public');
         } else {
@@ -102,6 +104,8 @@ class productController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+
+        // TODO delete product photos
 
         return redirect('/products')->with('edit_delete', 'Product was Deleted');
 

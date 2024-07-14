@@ -47,7 +47,7 @@
                             <form method='POST' action='{{ route('products.delete', [$product['id']]) }}'>
                                 @csrf
                                 @method('DELETE')
-                                <button type='submit' class='btn btn-danger'>Delete</button>
+                                <button type='submit' class='btn btn-danger' onclick="return confirm('are you sure')">Delete</button>
                             </form>
                         </div>
                     </div>

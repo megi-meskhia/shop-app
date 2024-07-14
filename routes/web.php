@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\productController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,12 +18,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/products', [productController::class, 'index']);
-Route::get('/products/create', [productController::class, 'create']);
-Route::post('/products', [productController::class, 'store'])->name('products.create');
-Route::get('/products/{product}', [productController::class, 'show']);
-Route::get('/products/{product}/edit', [productController::class, 'edit'])->name('products.edit');
-Route::put('/products/{product}', [productController::class, 'update'])->name('products.update');
-Route::delete('/products/{product}', [productController::class, 'destroy'])->name('products.delete');
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/create', [ProductController::class, 'create']);
+Route::post('/products', [ProductController::class, 'store'])->name('products.create');
+Route::get('/products/{product}', [ProductController::class, 'show']);
+Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.delete');
 
 require __DIR__.'/auth.php';
